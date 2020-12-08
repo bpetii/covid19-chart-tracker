@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { fetchCountries } from "../../api";
 
 /* import styles from "./CountryPicker.module.css"; */
 
 const CountryPicker = (props) => {
+  const [countries, setCountries] = useState([]);
+  useEffect(() => {
+    const fetchAPI = async () => {
+        setCountries(await fetchCountries)
+    };
+    fetchAPI()
+    
+  }, []);
   return (
     <form>
       <label for="countries">Choose a country</label>
