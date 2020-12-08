@@ -7,7 +7,7 @@
 }
 
 .card {
-  width: 150px;
+  width: 100%;
   height: 150px;
   padding: 15px;
   background-color: wheat;
@@ -35,4 +35,19 @@
 
 .details p {
   color: gray;
+}
+
+@media (max-width: 550px) {
+  .cardContainer {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .card {
+    width: 100%;
+    padding: 15px;
+    background-color: wheat;
+    box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.5);
+    margin: 10px 0;
+  }
 }

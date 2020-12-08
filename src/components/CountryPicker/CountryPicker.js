@@ -1,25 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { fetchCountries } from "../../api";
 
-/* import styles from "./CountryPicker.module.css"; */
-
-const CountryPicker = (props) => {
+const CountryPicker = ({ onChangeCountry }) => {
   const [countries, setCountries] = useState([]);
   useEffect(() => {
     const fetchAPI = async () => {
-        setCountries(await fetchCountries)
+      const countryData = await fetchCountries();
+      setCountries(countryData);
     };
-    fetchAPI()
-    
+    fetchAPI();
   }, []);
+
   return (
     <form>
-      <label for="countries">Choose a country</label>
-      <select name="countries" id="countries">
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="opel">Opel</option>
-        <option value="audi">Audi</option>
+      <label htmlFor="countries">Choose a country</label>
+      <select
+        name="countries"
+        id="countries"
+        onChange={(e) => onChangeCountry(e.target.value)}
+      >
+        <option key="global" value="">
+          Global
+        </option>
+        {countries.map((country, index) => {
+          return (
+            <option key={index} value={country}>
+              {country}
+            </option>
+          );
+        })}
       </select>
     </form>
   );

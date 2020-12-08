@@ -25,12 +25,12 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
         </div>
       </div>
       <div className={cx(styles.card, styles.recovered)}>
-        <div className={styles.head}>Infected</div>
+        <div className={styles.head}>Recovered</div>
         <div className={styles.details}>
           <h3>
             <CountUp
               start={0}
-              end={confirmed.value}
+              end={recovered.value}
               duration={2.5}
               separator=","
             />
@@ -40,12 +40,12 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
         </div>
       </div>
       <div className={cx(styles.card, styles.deaths)}>
-        <div className={styles.head}>Infected</div>
+        <div className={styles.head}>Deaths</div>
         <div className={styles.details}>
           <h3>
             <CountUp
               start={0}
-              end={confirmed.value}
+              end={deaths.value}
               duration={2.5}
               separator=","
             />
