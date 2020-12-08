@@ -11,14 +11,16 @@ import { fetchData } from "./api";
 function App() {
   const [data, setData] = useState({});
 
-  useEffect(async () => {
-    const fetchedData = await fetchData();
-    setData({ ...fetchedData });
+  useEffect(() => {
+    const fetchAPI = async () => {
+      const fetchedData = await fetchData();
+      setData({ ...fetchedData });
+    };
+
+    fetchAPI();
   }, []);
   return (
     <div className={styles.container}>
-      {console.log(data)}
-
       <Cards data={data} />
       <CountryPicker />
       <Chart />
