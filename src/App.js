@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import styles from "./App.module.css";
 
@@ -9,15 +9,17 @@ import CountryPicker from "./components/CountryPicker/CountryPicker";
 import { fetchData } from "./api";
 
 function App() {
-  useEffect(async() => {
-    
+  const [data, setData] = useState({});
 
-    const data = await fetchData();
-    console.log(data);
+  useEffect(async () => {
+    const fetchedData = await fetchData();
+    setData({ ...fetchedData });
   }, []);
   return (
     <div className={styles.container}>
-      <Cards />
+      {console.log(data)}
+
+      <Cards data={data} />
       <CountryPicker />
       <Chart />
     </div>
